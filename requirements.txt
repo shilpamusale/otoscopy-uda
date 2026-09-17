@@ -1,0 +1,22 @@
+# Core deep learning
+torch>=2.0
+torchvision>=0.15
+
+# Numerics / data
+numpy
+pandas
+scipy
+
+# Classical ML + stats (feature analysis, cross-validation, multiple testing)
+scikit-learn
+statsmodels
+
+# Imaging
+Pillow
+opencv-python
+
+# Plotting (t-SNE, masking figures)
+matplotlib
+
+# Config
+PyYAML

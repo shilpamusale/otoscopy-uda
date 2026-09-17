@@ -1,0 +1,26 @@
+# .github/workflows/ci.yml — continuous integration.
+# On every push/PR: lint the package, run the tests, and build the Docker image
+# so the serving path can't silently break. Research scripts in experiments/ are
+# not linted or built (they're frozen and standalone).
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: ruff check src tests
+      - run: pytest
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t otoscopy-uda .

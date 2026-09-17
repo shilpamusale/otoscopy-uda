@@ -1,0 +1,6 @@
+# configs/model/resnet50_dann.example.yaml — model config template (DANN head).
+# Copy to resnet50_dann.yaml (gitignored). Weights are PINNED, not DEFAULT.
+backbone: "resnet50"
+pretrained_weights: "IMAGENET1K_V2"   # explicit version — never the DEFAULT alias
+head: "dann"
+domain_loss_weight: 0.5               # set 0.0 for the source-only ablation

@@ -1,0 +1,7 @@
+# configs/audit/drift.example.yaml — drift/masking parameters template.
+# Copy to drift.yaml (gitignored). The MMD bandwidth is SHARED (see docs/adr/0002).
+mmd:
+  bandwidth: 1.0                 # fixed gamma, shared across both sides of the comparison
+masking:
+  fill_method: "blur"            # blur/inpainting preferred over flat grey for eardrum images
+  n_repeats: 30

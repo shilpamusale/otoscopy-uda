@@ -1,0 +1,5 @@
+# configs/data/osu.example.yaml — dataset config template (OSU target).
+# Copy to osu.yaml (gitignored) and set the local path. One file per dataset.
+name: "OSU"                      # Nationwide Children's Hospital (Ohio) — target domain
+root: "/path/to/TM_Datasets/OSUdataset/"   # must contain Normal/ and Abnormal/
+image_size: 224

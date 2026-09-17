@@ -1,0 +1,12 @@
+# configs/serve/api.example.yaml — service configuration template.
+# Copy to configs/serve/api.yaml (gitignored) and set local values.
+model:
+  name: "resnet50_dann_osu"      # resolved to a checkpoint via configs/model/ + registry
+gate:
+  drift_threshold: 0.10          # MMD above this → withhold (see docs/adr/0002)
+  reliance_threshold: 0.15       # peripheral-reliance above this → warn/withhold
+  warn_margin: 0.02              # band below the hard threshold that triggers a warning
+server:
+  host: "0.0.0.0"
+  port: 8000
+

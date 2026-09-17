@@ -1,0 +1,54 @@
+# ─── Data (publicly available ≠ redistributable — see docs/DATA_CARD.md) ───
+/data/
+/datasets/
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.bmp
+
+# ─── Model checkpoints & weights ───
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.onnx
+
+# ─── Experiment outputs ───
+Feature_Output/
+NewMask/
+outputs/
+runs/
+results/
+*.csv
+tm_annotations_*.json
+
+# ─── Config: commit only *.example.yaml; real configs stay local ───
+configs/**/*.yaml
+!configs/**/*.example.yaml
+config.yaml
+config.yml
+config.local.*
+
+# ─── Manuscript (private until publication) ───
+docs/manuscript/
+
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ─── OS / editor ───
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

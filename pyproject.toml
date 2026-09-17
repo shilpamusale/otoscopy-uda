@@ -1,0 +1,45 @@
+# pyproject.toml — packaging, dependencies, and tooling for the product package.
+# `pip install -e ".[dev]"` from the repo root installs otoscopy_audit (editable)
+# plus the dev tools. Research scripts in experiments/ are NOT part of this
+# package; they run standalone.
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "otoscopy-uda"
+version = "0.0.0"
+description = "Audit-gated otoscopy classifier with cross-site drift and peripheral-reliance checks"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "statsmodels",
+    "Pillow",
+    "opencv-python",
+    "matplotlib",
+    "PyYAML",
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "httpx"]   # httpx: FastAPI test client
+
+[project.scripts]
+otoscopy-uda = "otoscopy_audit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

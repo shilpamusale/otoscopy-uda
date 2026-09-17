@@ -1,0 +1,19 @@
+# docker-compose.yml — local run of the serving stack.
+# Today: just the REST API. Later: a `dicom` service for the PACS listener
+# (see src/otoscopy_audit/serve/dicom/README.md). Configs and checkpoints are
+# bind-mounted so nothing environment-specific is baked into the image.
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./configs:/app/configs:ro          # config (mounted, not baked in)
+      - ./checkpoints:/app/checkpoints:ro   # trained weights (gitignored)
+    environment:
+      - OTOSCOPY_CONFIG=/app/configs/serve/api.yaml
+
+  # dicom:            # PLANNED — DICOM/PACS listener (Phase 2). Not built yet.
+  #   build: .
+  #   command: python -m otoscopy_audit.serve.dicom
