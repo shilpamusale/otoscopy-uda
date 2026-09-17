@@ -17,8 +17,10 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -e ".[dev]"
-      - run: ruff check src tests
-      - run: pytest
+      - run: ruff check src
+      # Tests are enabled in Phase 1. Skipped for now: with no test files yet,
+      # pytest exits with code 5 ("no tests collected") and fails the job.
+      # - run: pytest
   docker:
     runs-on: ubuntu-latest
     steps:
